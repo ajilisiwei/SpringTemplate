@@ -1,5 +1,5 @@
 package com.wei.spring.aopdemo;
 
-public interface PersonDao {
+public interface PersonDao{
 	void savePerson();
 }

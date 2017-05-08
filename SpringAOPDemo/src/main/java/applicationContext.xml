@@ -5,8 +5,17 @@
  xmlns:aop="http://www.springframework.org/schema/aop"
  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+<bean id="customerDao" class="com.wei.spring.aopdemo.CustomerDao"></bean>
+<bean id="exceptionHandler" class="com.wei.spring.aopdemo.ExceptionHandler"></bean>
 <bean id="personDaoImpl" class="com.wei.spring.aopdemo.PersonDaoImpl"></bean>
 <bean id="transiaction" class="com.wei.spring.aopdemo.Transication"></bean>
+<aop:config>
+	<aop:pointcut expression="execution(* com.wei.spring.aopdemo.CustomerDao.*(..))" id="customer"/>
+	<aop:aspect ref="exceptionHandler">
+		<aop:after-throwing method="afterThrowing" pointcut-ref="customer" throwing="e"/>
+	</aop:aspect>
+</aop:config>
+
 <aop:config>
 	<aop:pointcut expression="execution(* com.wei.spring.aopdemo.PersonDaoImpl.*(..))" id="perform"/>
 	<aop:aspect ref="transiaction">

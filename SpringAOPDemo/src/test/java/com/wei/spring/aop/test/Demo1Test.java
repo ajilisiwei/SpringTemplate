@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.wei.spring.aopdemo.CustomerDao;
 import com.wei.spring.aopdemo.PersonDao;
 
 public class Demo1Test {
@@ -13,5 +14,12 @@ public class Demo1Test {
 		ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
 		PersonDao demo1DaoImpl = (PersonDao)context.getBean("personDaoImpl");
 		demo1DaoImpl.savePerson();
+	}
+	
+	@Test
+	public void TestThrow() {
+		ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+		CustomerDao customerDao=(CustomerDao)context.getBean("customerDao");
+		customerDao.insertCustomer();
 	}
 }
