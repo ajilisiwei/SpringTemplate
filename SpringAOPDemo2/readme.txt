@@ -1,0 +1,2 @@
+1.一种是常规JDK，一种是CGLIB,当代理对象实现了至少一个接口时，默认使用JDK动态创建代理对象，当代理对象没有实现任何接口时，就会使用CGLIB方法。
+	由于personServiceImpl实现了personService接口，所以强制转换必须用父类personService来定义
